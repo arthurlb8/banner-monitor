@@ -68,12 +68,13 @@ jobs:
           # Save scan output to temp
           cp -r public/data /tmp/scan-data
           cp -r public/screenshots /tmp/scan-screenshots
-          # Sync to whatever remote has RIGHT NOW (not 10 min ago)
+          # Sync to whatever remote has RIGHT NOW
           git fetch origin main
           git reset --hard origin/main
-          # Restore scan output on top of latest
-          cp -r /tmp/scan-data/* public/data/
-          cp -r /tmp/scan-screenshots/* public/screenshots/
+          # Replace output dirs entirely with fresh scan
+          rm -rf public/data public/screenshots
+          cp -r /tmp/scan-data public/data
+          cp -r /tmp/scan-screenshots public/screenshots
           # Commit and push
           git add public/data/ public/screenshots/
           git diff --staged --quiet || git commit -m "🤖 Automated scan: $(date -u +"%Y-%m-%d %H:%M UTC")"
