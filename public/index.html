@@ -1049,8 +1049,8 @@
 
                 return `
                     <div class="ref-card">
-                        <img src="../reference-banners/${ref.file}" alt="${ref.name}"
-                             onerror="this.style.display='none'" onclick="openModal('../reference-banners/${ref.file}')">
+                        <img src="./reference-banners/${ref.file}" alt="${ref.name}"
+                             onerror="this.style.display='none'" onclick="openModal('./reference-banners/${ref.file}')">
                         <div class="ref-card-body">
                             <h4>${ref.name}</h4>
                             <div class="ref-card-stats">
@@ -1177,8 +1177,8 @@
                                 const count = countBannerOnSite(site, ref.id);
                                 return `
                                     <div class="banner-ref-cell ${count > 0 ? 'active' : 'inactive'}">
-                                        <div class="banner-ref-img" onclick="openModal('../reference-banners/${ref.file}')">
-                                            <img src="../reference-banners/${ref.file}" alt="${ref.name}"
+                                        <div class="banner-ref-img" onclick="openModal('./reference-banners/${ref.file}')">
+                                            <img src="./reference-banners/${ref.file}" alt="${ref.name}"
                                                  onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:var(--gray-100);color:var(--gray-500);font-size:0.65rem;\\'>Sin imagen</div>'">
                                             <span class="banner-count-badge ${count > 0 ? 'up' : 'down'}">${count}</span>
                                         </div>
