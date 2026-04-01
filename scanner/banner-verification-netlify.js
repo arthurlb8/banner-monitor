@@ -18,7 +18,7 @@ const CONFIG = {
   
   pagesPerSite: 2, // Reduced for faster GitHub Actions
   screenshotsPerPage: 2, // Only top + sidebar (skip full page)
-  matchThreshold: 0.45,
+  matchThreshold: 0.50,
   
   csvPath: './websites.csv',
   outputDir: './public/screenshots',
@@ -183,7 +183,10 @@ async function verifySite(browser, site, pythonScriptPath) {
         const maxScroll = Math.min(pageHeight, 6000); // Cap at 6000px to keep scan time reasonable
         const sections = Math.ceil(maxScroll / viewportHeight);
 
-        // Scroll through the page and screenshot each section
+        // Set viewport size so each screenshot captures a full section
+        await page.setViewportSize({ width: viewportWidth, height: viewportHeight });
+
+        // Scroll through the page and screenshot each visible viewport
         for (let s = 0; s < sections; s++) {
           const scrollY = s * viewportHeight;
           await page.evaluate(y => window.scrollTo(0, y), scrollY);
@@ -191,10 +194,8 @@ async function verifySite(browser, site, pythonScriptPath) {
 
           const sectionName = `page_${i + 1}_section_${s + 1}_${timestamp}.png`;
           const sectionPath = path.join(siteDir, sectionName);
-          await page.screenshot({
-            path: sectionPath,
-            clip: { x: 0, y: scrollY, width: viewportWidth, height: Math.min(viewportHeight, pageHeight - scrollY) }
-          });
+          // Screenshot the current viewport (no clip — scroll already positioned it)
+          await page.screenshot({ path: sectionPath });
           screenshots.push({ name: sectionName, path: sectionPath });
         }
 
