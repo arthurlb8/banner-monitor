@@ -1,0 +1,15 @@
+{
+  "name": "banner-verification-netlify",
+  "version": "1.0.0",
+  "description": "Automated banner verification system for Netlify",
+  "scripts": {
+    "scan": "node scanner/banner-verification-netlify.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "csv-parse": "^5.5.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

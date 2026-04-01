@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Media Monitor — Monitoreo de Presencia Publicitaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0A0A0A;
+            --dark: #141414;
+            --dark-card: #1A1A1A;
+            --lime: #BFFF00;
+            --lime-dim: rgba(191, 255, 0, 0.15);
+            --cream: #F4F4F0;
+            --gray-100: #E5E5E2;
+            --gray-300: #A3A3A0;
+            --gray-500: #6B6B68;
+            --gray-700: #3D3D3A;
+            --white: #FFFFFF;
+            --green: #22C55E;
+            --red: #EF4444;
+            --orange: #F59E0B;
+            --coral: #E85D3A;
+            --blue: #5B8DBE;
+            --purple: #7B5EA7;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ─── HEADER / NAV ─── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            padding: 0 2rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--black);
+            border-radius: var(--radius-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--lime);
+            font-weight: 800;
+        }
+
+        .nav-brand span {
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-500);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--black);
+        }
+
+        .nav-pill {
+            background: var(--black);
+            color: var(--white) !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.85rem !important;
+            transition: opacity 0.2s !important;
+        }
+
+        .nav-pill:hover { opacity: 0.85; }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--lime-dim);
+            color: var(--black);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 1.2rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(191, 255, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 .accent {
+            color: var(--black);
+            background: linear-gradient(135deg, var(--lime), #90EE90);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: var(--gray-500);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+
+        .hero-meta-item .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ─── STATS BAR ─── */
+        .stats-bar {
+            max-width: 1200px;
+            margin: 0 auto 2.5rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--dark);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover { transform: translateY(-3px); }
+
+        .stat-card .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gray-300);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .stat-card .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--lime);
+            line-height: 1;
+        }
+
+        .stat-card .stat-sub {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 0.35rem;
+        }
+
+        /* ─── REFERENCE BANNERS ─── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 2.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title .count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            background: var(--lime-dim);
+            padding: 0.2rem 0.7rem;
+            border-radius: 100px;
+            margin-left: 0.5rem;
+            font-weight: 600;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .ref-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--gray-100);
+        }
+
+        .ref-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ref-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ref-card-body {
+            padding: 1.25rem;
+        }
+
+        .ref-card-body h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .ref-card-stats {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .ref-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        .ref-stat .num {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .ref-stat.confirmed .num { color: var(--green); }
+        .ref-stat.discarded .num { color: var(--red); }
+
+        /* ─── FILTERS ─── */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.55rem 1.25rem;
+            border: 1px solid var(--gray-100);
+            background: var(--white);
+            border-radius: 100px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--black);
+            color: var(--black);
+        }
+
+        .filter-btn.active {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .search-input {
+            padding: 0.55rem 1rem;
+            border: 1px solid var(--gray-100);
+            border-radius: 100px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            width: 220px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus { border-color: var(--black); }
+
+        /* ─── SITE CARDS ─── */
+        .sites-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .site-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--gray-100);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .site-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .site-card-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--gray-100);
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .site-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .site-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--dark);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lime);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .site-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+        }
+
+        .site-url {
+            color: var(--gray-500);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .site-url:hover { color: var(--black); }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-found {
+            background: rgba(34, 197, 94, 0.1);
+            color: #15803d;
+        }
+
+        .badge-not-found {
+            background: rgba(239, 68, 68, 0.08);
+            color: #b91c1c;
+        }
+
+        .badge-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: #a16207;
+        }
+
+        /* ─── BANNER GRID INSIDE SITE CARDS ─── */
+        .banners-area {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .banner-row-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .banner-ref-cell {
+            text-align: center;
+        }
+
+        .banner-ref-cell.inactive {
+            opacity: 0.35;
+        }
+
+        .banner-ref-img {
+            position: relative;
+            border-radius: var(--radius-xs);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+            aspect-ratio: 16/9;
+        }
+
+        .banner-ref-img:hover { transform: scale(1.04); }
+
+        .banner-ref-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-count-badge {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .banner-count-badge.up {
+            background: var(--green);
+            color: var(--white);
+        }
+
+        .banner-count-badge.down {
+            background: var(--gray-300);
+            color: var(--white);
+        }
+
+        .banner-ref-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .banner-ref-cell.active .banner-ref-label {
+            color: var(--black);
+        }
+
+        @media (max-width: 500px) {
+            .banner-row-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+        }
+
+        /* ─── MODAL ─── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal-overlay img {
+            max-width: 95%;
+            max-height: 90vh;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 0 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover { transform: scale(1.1); }
+
+        /* ─── LOADING ─── */
+        .loading-state {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .loading-spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--gray-100);
+            border-top-color: var(--black);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .loading-state h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .loading-state p { color: var(--gray-500); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--dark);
+            color: var(--gray-300);
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-brand .nav-logo {
+            width: 32px;
+            height: 32px;
+            font-size: 0.9rem;
+        }
+
+        .footer-brand span {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+        }
+
+        /* ─── EMPTY STATE ─── */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-500);
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .navbar { padding: 0 1rem; }
+            .nav-links { display: none; }
+            .hero { padding: 2.5rem 1rem 2rem; }
+            .stats-bar { padding: 0 1rem; }
+            .section { padding: 0 1rem 2rem; }
+            .stat-card .stat-value { font-size: 2rem; }
+            .banner-item { gap: 0.75rem; }
+            .banner-thumb { width: 100px; height: 60px; }
+            .site-card-header { padding: 1rem; }
+            .banners-area { padding: 1rem; }
+        }
+
+        /* ─── SUMMARY TABLE ─── */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .summary-table th {
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-500);
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--gray-100);
+            font-weight: 600;
+        }
+
+        .summary-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 0.9rem;
+        }
+
+        .summary-table tr:hover td {
+            background: rgba(191, 255, 0, 0.04);
+        }
+
+        .summary-table .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--gray-100);
+            border-radius: 3px;
+            overflow: hidden;
+            min-width: 100px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .progress-fill.green { background: var(--green); }
+        .progress-fill.red { background: var(--red); }
+        .progress-fill.gray { background: var(--gray-300); }
+
+        /* ─── CROSS-REFERENCE TABLE ─── */
+        .cross-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cross-nav-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-100);
+            background: var(--white);
+            border-radius: 100px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            transition: all 0.2s;
+        }
+
+        .cross-nav-btn:hover:not(:disabled) {
+            border-color: var(--black);
+            color: var(--black);
+        }
+
+        .cross-nav-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .cross-nav-info {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .cross-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cross-table th,
+        .cross-table td {
+            padding: 0.75rem 0.6rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 0.85rem;
+        }
+
+        .cross-table thead th {
+            background: var(--dark);
+            color: var(--gray-300);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+        }
+
+        .cross-table thead th:first-child {
+            text-align: left;
+            padding-left: 1.25rem;
+            min-width: 180px;
+            color: var(--lime);
+        }
+
+        .cross-table tbody td:first-child {
+            text-align: left;
+            padding-left: 1.25rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .cross-table tbody tr:hover td {
+            background: rgba(191, 255, 0, 0.04);
+        }
+
+        .cross-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .cross-check.yes {
+            background: rgba(34, 197, 94, 0.12);
+            color: #15803d;
+        }
+
+        .cross-check.no {
+            background: rgba(239, 68, 68, 0.07);
+            color: #dc2626;
+        }
+
+        .cross-table .site-col-header {
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="nav-brand">
+            <div class="nav-logo">N</div>
+            <span>Ninja Media Monitor</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#dashboard" class="active">Dashboard</a></li>
+            <li><a href="#banners">Banners</a></li>
+            <li><a href="#sites">Sitios</a></li>
+            <li><a href="#" class="nav-pill" id="exportBtn" onclick="exportReport()">Exportar Reporte</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">Media Monitoring</div>
+        <h1>
+            <span class="accent">Monitoreo</span> de <span class="accent">presencia publicitaria</span>
+        </h1>
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <span class="dot"></span>
+                Sistema activo — escaneo diario
+            </div>
+        </div>
+    </section>
+
+    <!-- LOADING STATE -->
+    <div id="loadingState" class="loading-state">
+        <div class="loading-spinner"></div>
+        <h2>Cargando datos</h2>
+        <p>Obteniendo los resultados más recientes...</p>
+    </div>
+
+    <!-- MAIN CONTENT (hidden until data loads) -->
+    <div id="mainContent" style="display: none;">
+
+        <!-- STATS -->
+        <div class="stats-bar" id="dashboard">
+            <div class="stat-card">
+                <div class="stat-label">Sitios Monitoreados</div>
+                <div class="stat-value" id="totalSites">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Sitios Con Banners</div>
+                <div class="stat-value" id="sitesWithBanners">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Banners</div>
+                <div class="stat-value" id="totalBanners">0</div>
+            </div>
+        </div>
+
+        <!-- REFERENCE BANNERS SECTION -->
+        <section class="section" id="banners">
+            <div class="section-header">
+                <h2 class="section-title">Banners de Referencia <span class="count" id="refCount">0</span></h2>
+            </div>
+            <div class="reference-grid" id="referenceGrid"></div>
+        </section>
+
+        <!-- CROSS-REFERENCE TABLE -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Presencia por Sitio</h2>
+                <div class="cross-nav">
+                    <button class="cross-nav-btn" id="crossPrev" onclick="crossPage(-1)">&#8592; Anterior</button>
+                    <span class="cross-nav-info" id="crossPageInfo">1 / 1</span>
+                    <button class="cross-nav-btn" id="crossNext" onclick="crossPage(1)">Siguiente &#8594;</button>
+                </div>
+            </div>
+            <div style="background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow-x: auto; border: 1px solid var(--gray-100);">
+                <table class="cross-table" id="crossTable">
+                    <thead id="crossHead"></thead>
+                    <tbody id="crossBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SITES SECTION -->
+        <section class="section" id="sites">
+            <div class="section-header">
+                <h2 class="section-title">Sitios Web <span class="count" id="sitesCount">0</span></h2>
+                <div class="filter-bar">
+                    <input type="text" class="search-input" placeholder="Buscar sitio..." id="searchInput" oninput="renderSites()">
+                    <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">Todos</button>
+                    <button class="filter-btn" data-filter="found" onclick="setFilter('found', this)">Con Banners</button>
+                    <button class="filter-btn" data-filter="not-found" onclick="setFilter('not-found', this)">Sin Banners</button>
+                </div>
+            </div>
+            <div class="sites-grid" id="sitesContainer"></div>
+        </section>
+    </div>
+
+    <!-- IMAGE MODAL -->
+    <div class="modal-overlay" id="imageModal" onclick="closeModal()">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <img id="modalImage" src="" alt="Vista ampliada del banner">
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="nav-logo">N</div>
+                <span>Ninja Media Monitor</span>
+            </div>
+            <p>Monitoreo automatizado de presencia publicitaria en medios digitales.</p>
+            <p>&copy; 2026 Ninja SRL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ─── STATE ───
+        let allSites = [];
+        let currentFilter = 'all';
+        let referenceBanners = [
+            { id: 'metro', name: 'Metro Campaign', file: 'metro-campaign.png' },
+            { id: 'obras', name: 'Obras Campaign', file: 'obras-campaign.png' },
+            { id: 'policia', name: 'Policía Campaign', file: 'policia-campaign.png' }
+        ];
+
+
+        // ─── EMBEDDED SAMPLE DATA (works without server) ───
+        const SAMPLE_DATA = {
+            lastUpdated: "2026-03-31T02:15:00.000Z",
+            totalSites: 31,
+            sitesWithBanners: 18,
+            totalBanners: 34,
+            sites: [
+                { siteName: "Polo Digital 10", siteUrl: "https://www.polodigital10.com", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "Neyba Informativo", siteUrl: "https://www.neybainformativo.net", bannersFound: 1, screenshots: [{ image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "Diario Altagraciano", siteUrl: "https://www.altagraciano.com", bannersFound: 3, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }, { image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "Noti Digital RD", siteUrl: "https://www.notidigitalrd.com.do", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "La Voz de San Juan", siteUrl: "https://www.lavozdesanjuan.net", bannersFound: 0, screenshots: [] },
+                { siteName: "Despierta El Sur", siteUrl: "https://www.despiertaelsur.com", bannersFound: 1, screenshots: [{ image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "El Jacaguero", siteUrl: "https://www.eljacaguero.com.do", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "Caribbean Digital", siteUrl: "https://www.caribbeandigital.net", bannersFound: 1, screenshots: [{ image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "Noticias Breves JAZB", siteUrl: "https://noticiasbrevesjazb.com", bannersFound: 0, screenshots: [] },
+                { siteName: "10 Noticias", siteUrl: "https://www.10noticias.com.do", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "Gobernanzas Digital", siteUrl: "https://gobernanzasdigital.com", bannersFound: 1, screenshots: [{ image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "M2 Noticias", siteUrl: "https://m2noticias.com", bannersFound: 0, screenshots: [] },
+                { siteName: "Factor Mundo", siteUrl: "https://factormundo.com", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "Conocer al Autor", siteUrl: "https://conoceralautor.do", bannersFound: 1, screenshots: [{ image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "El Vespertino", siteUrl: "https://www.elvespertino.com", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "Entre Notas", siteUrl: "https://www.entrenotas.com.do", bannersFound: 0, screenshots: [] },
+                { siteName: "Expreso Digital", siteUrl: "https://expresodigital.com.do", bannersFound: 1, screenshots: [{ image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "Valor Noticioso", siteUrl: "https://www.valornoticioso.com", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "Revista Business", siteUrl: "https://revistabusiness.com.do", bannersFound: 0, screenshots: [] },
+                { siteName: "Armario Libre", siteUrl: "https://armariolibre.com.do", bannersFound: 1, screenshots: [{ image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "El Pregonero RD", siteUrl: "https://elpregonerord.com", bannersFound: 0, screenshots: [] },
+                { siteName: "Diario Noticioso RD", siteUrl: "https://diarionoticiosord.com", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "Nizaero", siteUrl: "https://nizaero.com", bannersFound: 1, screenshots: [{ image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "Fuente Noticias", siteUrl: "https://fuentenoticias.com", bannersFound: 0, screenshots: [] },
+                { siteName: "Noti Impacto", siteUrl: "https://www.notiimpacto.com.do", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "RD 24 Horas", siteUrl: "https://rd24horas.com", bannersFound: 0, screenshots: [] },
+                { siteName: "Pincel Digital", siteUrl: "https://pinceldigital.do", bannersFound: 1, screenshots: [{ image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "Imparcial RD", siteUrl: "https://www.imparcialrd.com", bannersFound: 2, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }] },
+                { siteName: "Noticias en un Clic", siteUrl: "https://noticiasenunclic.com", bannersFound: 0, screenshots: [] },
+                { siteName: "Tu República", siteUrl: "https://turepublica.com", bannersFound: 1, screenshots: [{ image: "banner_policia_1.png", matches: ["policia-campaign"] }] },
+                { siteName: "El Diario", siteUrl: "https://eldiario.do", bannersFound: 3, screenshots: [{ image: "banner_metro_1.png", matches: ["metro-campaign"] }, { image: "banner_obras_1.png", matches: ["obras-campaign"] }, { image: "banner_policia_1.png", matches: ["policia-campaign"] }] }
+            ]
+        };
+
+        // ─── LOAD DATA ───
+        async function loadData() {
+            try {
+                let data;
+                try {
+                    const response = await fetch('./data/results.json');
+                    data = await response.json();
+                } catch (e) {
+                    // Fallback to embedded data when opened as local file
+                    data = SAMPLE_DATA;
+                }
+
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+
+                document.getElementById('totalSites').textContent = data.totalSites;
+                document.getElementById('sitesWithBanners').textContent = data.sitesWithBanners;
+                document.getElementById('totalBanners').textContent = data.totalBanners;
+
+                allSites = data.sites || [];
+                updateStats();
+                renderReferenceBanners();
+                renderCrossTable();
+                renderSites();
+            } catch (error) {
+                document.getElementById('loadingState').innerHTML = `
+                    <div style="padding: 4rem 2rem; text-align:center;">
+                        <h2 style="margin-bottom: 0.5rem;">No hay datos disponibles</h2>
+                        <p style="color: var(--gray-500);">El escaneo aún no se ha ejecutado o los datos no están disponibles.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ─── STATS ───
+        function updateStats() {
+            // Stats are driven by the data; cross-table handles the visual breakdown
+        }
+
+        // ─── REFERENCE BANNERS ───
+        function renderReferenceBanners() {
+            document.getElementById('refCount').textContent = referenceBanners.length;
+
+            const grid = document.getElementById('referenceGrid');
+            grid.innerHTML = referenceBanners.map(ref => {
+                let sitesWithThis = 0;
+
+                allSites.forEach(site => {
+                    if (siteHasBanner(site, ref.id)) sitesWithThis++;
+                });
+
+                return `
+                    <div class="ref-card">
+                        <img src="../reference-banners/${ref.file}" alt="${ref.name}"
+                             onerror="this.style.display='none'" onclick="openModal('../reference-banners/${ref.file}')">
+                        <div class="ref-card-body">
+                            <h4>${ref.name}</h4>
+                            <div class="ref-card-stats">
+                                <div class="ref-stat"><span class="num">${sitesWithThis}</span> sitios activos</div>
+                                <div class="ref-stat"><span class="num">${allSites.length - sitesWithThis}</span> sin presencia</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ─── CROSS-REFERENCE TABLE ───
+        const CROSS_PAGE_SIZE = 8;
+        let crossPageIndex = 0;
+
+        function crossPage(delta) {
+            const totalPages = Math.ceil(allSites.length / CROSS_PAGE_SIZE);
+            crossPageIndex = Math.max(0, Math.min(crossPageIndex + delta, totalPages - 1));
+            renderCrossTable();
+        }
+
+        function matchesRefId(matchEntry, refId) {
+            // Handle both formats: string ("metro-campaign") or object ({referenceImage: "metro-campaign.png"})
+            if (typeof matchEntry === 'string') return matchEntry.toLowerCase().includes(refId);
+            if (matchEntry && matchEntry.referenceImage) return matchEntry.referenceImage.toLowerCase().includes(refId);
+            return false;
+        }
+
+        function siteHasBanner(site, refId) {
+            if (!site.screenshots) return false;
+            return site.screenshots.some(s => {
+                return (s.matches || []).some(m => matchesRefId(m, refId));
+            });
+        }
+
+        function renderCrossTable() {
+            const totalPages = Math.ceil(allSites.length / CROSS_PAGE_SIZE) || 1;
+            const start = crossPageIndex * CROSS_PAGE_SIZE;
+            const pageSites = allSites.slice(start, start + CROSS_PAGE_SIZE);
+
+            // Page info
+            document.getElementById('crossPageInfo').textContent = `${crossPageIndex + 1} / ${totalPages}`;
+            document.getElementById('crossPrev').disabled = crossPageIndex === 0;
+            document.getElementById('crossNext').disabled = crossPageIndex >= totalPages - 1;
+
+            // Header row
+            document.getElementById('crossHead').innerHTML = `
+                <tr>
+                    <th>Banner</th>
+                    ${pageSites.map(s => `<th><span class="site-col-header" title="${s.siteName}">${s.siteName}</span></th>`).join('')}
+                </tr>
+            `;
+
+            // Body rows — one per reference banner
+            document.getElementById('crossBody').innerHTML = referenceBanners.map(ref => `
+                <tr>
+                    <td>${ref.name}</td>
+                    ${pageSites.map(site => {
+                        const found = siteHasBanner(site, ref.id);
+                        return `<td><span class="cross-check ${found ? 'yes' : 'no'}">${found ? '&#10003;' : '&#10007;'}</span></td>`;
+                    }).join('')}
+                </tr>
+            `).join('');
+        }
+
+        // ─── FILTERS ───
+        function setFilter(filter, btn) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderSites();
+        }
+
+        // ─── HELPER: count how many times a reference banner appears on a site ───
+        function countBannerOnSite(site, refId) {
+            if (!site.screenshots) return 0;
+            return site.screenshots.filter(s => {
+                return (s.matches || []).some(m => matchesRefId(m, refId));
+            }).length;
+        }
+
+        // ─── RENDER SITES ───
+        function renderSites() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+
+            let filtered = allSites.filter(site => {
+                if (search && !site.siteName.toLowerCase().includes(search)) return false;
+                if (currentFilter === 'found') return site.bannersFound > 0;
+                if (currentFilter === 'not-found') return site.bannersFound === 0;
+                return true;
+            });
+
+            document.getElementById('sitesCount').textContent = filtered.length;
+
+            const container = document.getElementById('sitesContainer');
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                        </svg>
+                        <h3>No se encontraron resultados</h3>
+                        <p>Intenta con otro filtro o término de búsqueda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(site => {
+                const initial = site.siteName.charAt(0).toUpperCase();
+                const hasBanners = site.bannersFound > 0;
+
+                const badgeHTML = hasBanners
+                    ? `<span class="badge badge-found">${site.bannersFound} banner(s) activo(s)</span>`
+                    : `<span class="badge badge-not-found">Sin banners</span>`;
+
+                // Always show all 3 reference banners with their count on this site
+                const bannersHTML = `
+                    <div class="banners-area">
+                        <div class="banner-row-grid">
+                            ${referenceBanners.map(ref => {
+                                const count = countBannerOnSite(site, ref.id);
+                                return `
+                                    <div class="banner-ref-cell ${count > 0 ? 'active' : 'inactive'}">
+                                        <div class="banner-ref-img" onclick="openModal('../reference-banners/${ref.file}')">
+                                            <img src="../reference-banners/${ref.file}" alt="${ref.name}"
+                                                 onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:var(--gray-100);color:var(--gray-500);font-size:0.65rem;\\'>Sin imagen</div>'">
+                                            <span class="banner-count-badge ${count > 0 ? 'up' : 'down'}">${count}</span>
+                                        </div>
+                                        <div class="banner-ref-label">${ref.name}</div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+
+                return `
+                    <div class="site-card">
+                        <div class="site-card-header">
+                            <div class="site-info">
+                                <div class="site-icon">${initial}</div>
+                                <div>
+                                    <div class="site-name">${site.siteName}</div>
+                                    <a class="site-url" href="${site.siteUrl}" target="_blank">${site.siteUrl}</a>
+                                </div>
+                            </div>
+                            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                                ${badgeHTML}
+                            </div>
+                        </div>
+                        ${bannersHTML}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ─── MODAL ───
+        function openModal(src) {
+            event.stopPropagation();
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ─── EXPORT ───
+        function exportReport() {
+            const lines = ['Ninja Media Monitor — Reporte de Presencia Publicitaria', ''];
+            lines.push(`Fecha: ${new Date().toLocaleString('es-DO')}`);
+            lines.push(`Total sitios: ${allSites.length}`);
+            lines.push('');
+
+            referenceBanners.forEach(ref => {
+                let sitesUp = 0;
+                allSites.forEach(site => { if (siteHasBanner(site, ref.id)) sitesUp++; });
+                lines.push(`${ref.name}: presente en ${sitesUp} de ${allSites.length} sitios`);
+            });
+
+            lines.push('');
+            lines.push('─── Detalle por Sitio ───');
+            lines.push('');
+
+            allSites.forEach(site => {
+                lines.push(`${site.siteName} (${site.siteUrl})`);
+                referenceBanners.forEach(ref => {
+                    const count = countBannerOnSite(site, ref.id);
+                    lines.push(`  ${ref.name}: ${count > 0 ? count + ' activo(s)' : '—'}`);
+                });
+                lines.push('');
+            });
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `reporte-banners-${new Date().toISOString().slice(0,10)}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // ─── INIT ───
+        loadData();
+        setInterval(loadData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+name: Daily Banner Verification
+
+on:
+  schedule:
+    # Runs every day at 2:00 AM UTC (adjust timezone as needed)
+    - cron: '0 2 * * *'
+  
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  scan-banners:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: 📦 Install Python dependencies
+        run: |
+          pip install opencv-python-headless numpy
+      
+      - name: 📦 Install Node dependencies
+        run: |
+          npm install
+      
+      - name: 🎭 Install Playwright
+        run: |
+          npx playwright install --with-deps chromium
+      
+      - name: 🔍 Run banner verification
+        run: |
+          node scanner/banner-verification-netlify.js
+        env:
+          CI: true
+      
+      - name: 📸 Optimize screenshots (reduce size)
+        run: |
+          # Keep only screenshots with detected banners
+          find public/screenshots -type f -name "*full*.png" -delete
+          echo "Optimized screenshots"
+      
+      - name: 📅 Update timestamp
+        run: |
+          echo "{\"lastRun\": \"$(date -u +"%Y-%m-%dT%H:%M:%SZ")\"}" > public/data/last-run.json
+      
+      - name: 💾 Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/data/ public/screenshots/
+          git diff --staged --quiet || git commit -m "🤖 Automated scan: $(date -u +"%Y-%m-%d %H:%M UTC")"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: ✅ Deployment trigger
+        run: |
+          echo "✅ Results committed! Netlify will auto-deploy."
+          echo "🌐 Check your site in 2-3 minutes at your Netlify URL"
