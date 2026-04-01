@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-04-01T06:56:25.972Z",
+  "lastUpdated": "2026-04-01T08:36:07.978Z",
   "totalSites": 31,
-  "sitesWithBanners": 6,
-  "totalBanners": 8,
+  "sitesWithBanners": 8,
+  "totalBanners": 13,
   "sites": [
     {
       "siteName": "Polo Digital 10",
@@ -12,22 +12,22 @@
       "screenshots": [
         {
           "url": "https://www.polodigital10.com",
-          "image": "page_1_1775026260702.png",
+          "image": "page_1_1775032301961.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.6379638910293579,
+              "confidence": 0.6379650831222534,
               "method": "multiscale"
             }
           ]
         },
         {
           "url": "https://www.polodigital10.com/",
-          "image": "page_2_1775026263985.png",
+          "image": "page_2_1775032304925.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.6379638910293579,
+              "confidence": 0.5898966193199158,
               "method": "multiscale"
             }
           ]
@@ -98,11 +98,11 @@
       "screenshots": [
         {
           "url": "https://www.10noticias.com.do",
-          "image": "page_1_1775026312769.png",
+          "image": "page_1_1775032374018.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5942568182945251,
+              "confidence": 0.5942581295967102,
               "method": "multiscale"
             }
           ]
@@ -117,7 +117,7 @@
       "screenshots": [
         {
           "url": "https://gobernanzasdigital.com",
-          "image": "page_1_1775026321896.png",
+          "image": "page_1_1775032383655.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
@@ -128,7 +128,7 @@
         },
         {
           "url": "https://gobernanzasdigital.com/",
-          "image": "page_2_1775026325539.png",
+          "image": "page_2_1775032387364.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
@@ -142,23 +142,92 @@
     {
       "siteName": "M2 Noticias",
       "siteUrl": "https://m2noticias.com",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 2,
+      "screenshots": [
+        {
+          "url": "https://m2noticias.com",
+          "image": "page_1_1775032391052.png",
+          "matches": [
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.6189876198768616,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://m2noticias.com/",
+          "image": "page_2_1775032394584.png",
+          "matches": [
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.6189876198768616,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "Factor Mundo",
       "siteUrl": "https://factormundo.com",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 2,
+      "screenshots": [
+        {
+          "url": "https://factormundo.com",
+          "image": "page_1_1775032397842.png",
+          "matches": [
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.6008197665214539,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://factormundo.com/el-director-ejecutivo-del-servicio-nacional-de-salud-julio-landron-garantizo-que-los-hospitales-publicos-estaran-operativos-durante-todo-el-asueto-de-semana-santa/",
+          "image": "page_2_1775032400753.png",
+          "matches": [
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.6039461493492126,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "Conocer al Autor",
       "siteUrl": "https://conoceralautor.do",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 2,
+      "screenshots": [
+        {
+          "url": "https://conoceralautor.do",
+          "image": "page_1_1775032404649.png",
+          "matches": [
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.6551307439804077,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://conoceralautor.do/",
+          "image": "page_2_1775032407602.png",
+          "matches": [
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5991739630699158,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "El Vespertino",
@@ -189,7 +258,7 @@
       "screenshots": [
         {
           "url": "https://www.valornoticioso.com",
-          "image": "page_1_1775026476779.png",
+          "image": "page_1_1775032458815.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
@@ -224,21 +293,9 @@
     {
       "siteName": "Diario Noticioso RD",
       "siteUrl": "https://diarionoticiosord.com",
-      "status": "found",
-      "bannersFound": 1,
-      "screenshots": [
-        {
-          "url": "https://www.diarionoticiosord.com/",
-          "image": "page_2_1775026506311.png",
-          "matches": [
-            {
-              "referenceImage": "obras-campaign.png",
-              "confidence": 0.5992265939712524,
-              "method": "multiscale"
-            }
-          ]
-        }
-      ]
+      "status": "not_found",
+      "bannersFound": 0,
+      "screenshots": []
     },
     {
       "siteName": "Nizaero",
@@ -269,11 +326,11 @@
       "screenshots": [
         {
           "url": "https://rd24horas.com",
-          "image": "page_1_1775026536152.png",
+          "image": "page_1_1775032519944.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.6042783260345459,
+              "confidence": 0.5985770225524902,
               "method": "multiscale"
             }
           ]
