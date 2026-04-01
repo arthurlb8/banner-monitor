@@ -8,6 +8,10 @@ on:
   # Allow manual trigger from GitHub UI
   workflow_dispatch:
 
+concurrency:
+  group: banner-scan
+  cancel-in-progress: true
+
 jobs:
   scan-banners:
     runs-on: ubuntu-latest
@@ -62,7 +66,7 @@ jobs:
           git reset --soft origin/main
           git add public/data/ public/screenshots/
           git diff --staged --quiet || git commit -m "🤖 Automated scan: $(date -u +"%Y-%m-%d %H:%M UTC")"
-          git push origin HEAD:main
+          git push --force origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
