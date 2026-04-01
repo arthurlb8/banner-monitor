@@ -62,7 +62,21 @@ jobs:
           echo "{\"lastRun\": \"$(date -u +"%Y-%m-%dT%H:%M:%SZ")\"}" > public/data/last-run.json
       
       - name: 💾 Commit and push results
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🤖 Automated scan: ${{ github.run_id }}"
-          file_pattern: "public/data/* public/screenshots/**"
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          # Save scan output to temp
+          cp -r public/data /tmp/scan-data
+          cp -r public/screenshots /tmp/scan-screenshots
+          # Sync to whatever remote has RIGHT NOW (not 10 min ago)
+          git fetch origin main
+          git reset --hard origin/main
+          # Restore scan output on top of latest
+          cp -r /tmp/scan-data/* public/data/
+          cp -r /tmp/scan-screenshots/* public/screenshots/
+          # Commit and push
+          git add public/data/ public/screenshots/
+          git diff --staged --quiet || git commit -m "🤖 Automated scan: $(date -u +"%Y-%m-%d %H:%M UTC")"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
