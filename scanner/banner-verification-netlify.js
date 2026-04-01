@@ -18,13 +18,13 @@ const CONFIG = {
   
   pagesPerSite: 2, // Reduced for faster GitHub Actions
   screenshotsPerPage: 2, // Only top + sidebar (skip full page)
-  matchThreshold: 0.65,
+  matchThreshold: 0.45,
   
   csvPath: './websites.csv',
   outputDir: './public/screenshots',
   dataDir: './public/data',
   
-  timeout: 25000 // Faster timeout for CI
+  timeout: 35000 // Timeout per page navigation
 };
 
 // ============================================
@@ -165,42 +165,65 @@ async function verifySite(browser, site, pythonScriptPath) {
       
       try {
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: CONFIG.timeout });
-        await page.waitForTimeout(1500);
-        
+        await page.waitForTimeout(2000);
+
         const siteDirName = site.name.replace(/[^a-z0-9]/gi, '_');
         const siteDir = path.join(CONFIG.outputDir, siteDirName);
         if (!fs.existsSync(siteDir)) {
           fs.mkdirSync(siteDir, { recursive: true });
         }
-        
+
         const screenshots = [];
         const timestamp = Date.now();
-        
-        // Top section only (most common banner location)
-        const topName = `page_${i + 1}_${timestamp}.png`;
-        const topPath = path.join(siteDir, topName);
-        await page.screenshot({ 
-          path: topPath, 
-          clip: { x: 0, y: 0, width: 1920, height: 1000 }
-        });
-        screenshots.push({ name: topName, path: topPath });
-        
-        // Check for matches
+        const viewportHeight = 1000;
+        const viewportWidth = 1920;
+
+        // Get total page height
+        const pageHeight = await page.evaluate(() => document.body.scrollHeight);
+        const maxScroll = Math.min(pageHeight, 6000); // Cap at 6000px to keep scan time reasonable
+        const sections = Math.ceil(maxScroll / viewportHeight);
+
+        // Scroll through the page and screenshot each section
+        for (let s = 0; s < sections; s++) {
+          const scrollY = s * viewportHeight;
+          await page.evaluate(y => window.scrollTo(0, y), scrollY);
+          await page.waitForTimeout(800); // Wait for lazy-loaded ads/images
+
+          const sectionName = `page_${i + 1}_section_${s + 1}_${timestamp}.png`;
+          const sectionPath = path.join(siteDir, sectionName);
+          await page.screenshot({
+            path: sectionPath,
+            clip: { x: 0, y: scrollY, width: viewportWidth, height: Math.min(viewportHeight, pageHeight - scrollY) }
+          });
+          screenshots.push({ name: sectionName, path: sectionPath });
+        }
+
+        // Check each section for matches
         let allMatches = [];
+        let matchImage = null;
         for (const screenshot of screenshots) {
           const matches = await findBannerInScreenshot(screenshot.path, pythonScriptPath);
           if (matches.length > 0) {
-            allMatches = allMatches.concat(matches);
+            // Deduplicate: only keep new reference images not already matched
+            for (const m of matches) {
+              const alreadyFound = allMatches.some(
+                existing => existing.referenceImage === m.referenceImage
+              );
+              if (!alreadyFound) {
+                allMatches.push(m);
+                if (!matchImage) matchImage = screenshot.name;
+              }
+            }
           }
         }
-        
+
         if (allMatches.length > 0) {
-          console.log(`   ✅ Found ${allMatches.length} banner(s)`);
+          console.log(`   ✅ Found ${allMatches.length} banner(s) across ${sections} sections`);
           results.bannersFound += allMatches.length;
-          
+
           results.screenshots.push({
             url,
-            image: topName,
+            image: matchImage,
             matches: allMatches
           });
         }
