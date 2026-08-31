@@ -1,43 +1,32 @@
 {
-  "lastUpdated": "2026-08-30T08:16:01.814Z",
+  "lastUpdated": "2026-08-31T08:38:08.808Z",
   "totalSites": 31,
-  "sitesWithBanners": 14,
-  "totalBanners": 43,
+  "sitesWithBanners": 21,
+  "totalBanners": 73,
   "sites": [
     {
       "siteName": "Polo Digital 10",
       "siteUrl": "https://www.polodigital10.com",
       "status": "found",
-      "bannersFound": 4,
+      "bannersFound": 3,
       "screenshots": [
         {
           "url": "https://www.polodigital10.com",
-          "image": "page_1_section_1_1788077111682.png",
+          "image": "page_1_section_1_1788164732970.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.525907576084137,
+              "confidence": 0.5524476766586304,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.6014540195465088,
-              "method": "multiscale"
-            }
-          ]
-        },
-        {
-          "url": "https://www.polodigital10.com/",
-          "image": "page_2_section_1_1788077127702.png",
-          "matches": [
-            {
-              "referenceImage": "metro-campaign.png",
-              "confidence": 0.5431679487228394,
+              "confidence": 0.5769333243370056,
               "method": "multiscale"
             },
             {
-              "referenceImage": "obras-campaign.png",
-              "confidence": 0.5781410336494446,
+              "referenceImage": "policia-campaign.png",
+              "confidence": 0.45564427971839905,
               "method": "multiscale"
             }
           ]
@@ -47,26 +36,9 @@
     {
       "siteName": "Neyba Informativo",
       "siteUrl": "https://www.neybainformativo.net",
-      "status": "found",
-      "bannersFound": 2,
-      "screenshots": [
-        {
-          "url": "https://www.neybainformativo.net",
-          "image": "page_1_section_1_1788077143199.png",
-          "matches": [
-            {
-              "referenceImage": "metro-campaign.png",
-              "confidence": 0.511393666267395,
-              "method": "multiscale"
-            },
-            {
-              "referenceImage": "obras-campaign.png",
-              "confidence": 0.529887855052948,
-              "method": "multiscale"
-            }
-          ]
-        }
-      ]
+      "status": "not_found",
+      "bannersFound": 0,
+      "screenshots": []
     },
     {
       "siteName": "Diario Altagraciano",
@@ -78,9 +50,31 @@
     {
       "siteName": "Noti Digital RD",
       "siteUrl": "https://www.notidigitalrd.com.do",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 3,
+      "screenshots": [
+        {
+          "url": "https://www.notidigitalrd.com.do",
+          "image": "page_1_section_1_1788164758001.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5448684692382812,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.6016373634338379,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "policia-campaign.png",
+              "confidence": 0.4662274718284607,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "La Voz de San Juan",
@@ -92,31 +86,9 @@
     {
       "siteName": "Despierta El Sur",
       "siteUrl": "https://www.despiertaelsur.com",
-      "status": "found",
-      "bannersFound": 3,
-      "screenshots": [
-        {
-          "url": "https://www.despiertaelsur.com",
-          "image": "page_1_section_1_1788077179583.png",
-          "matches": [
-            {
-              "referenceImage": "metro-campaign.png",
-              "confidence": 0.567710280418396,
-              "method": "multiscale"
-            },
-            {
-              "referenceImage": "obras-campaign.png",
-              "confidence": 0.5685256123542786,
-              "method": "multiscale"
-            },
-            {
-              "referenceImage": "policia-campaign.png",
-              "confidence": 0.45858025550842285,
-              "method": "multiscale"
-            }
-          ]
-        }
-      ]
+      "status": "not_found",
+      "bannersFound": 0,
+      "screenshots": []
     },
     {
       "siteName": "El Jacaguero",
@@ -126,16 +98,16 @@
       "screenshots": [
         {
           "url": "https://www.eljacaguero.com.do",
-          "image": "page_1_section_1_1788077197857.png",
+          "image": "page_1_section_1_1788164778636.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5108097195625305,
+              "confidence": 0.5108104944229126,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5550418496131897,
+              "confidence": 0.5550401210784912,
               "method": "multiscale"
             }
           ]
@@ -150,21 +122,21 @@
       "screenshots": [
         {
           "url": "https://www.caribbeandigital.net",
-          "image": "page_1_section_1_1788077219166.png",
+          "image": "page_1_section_1_1788164802054.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5453639030456543,
+              "confidence": 0.5599526166915894,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5935405492782593,
+              "confidence": 0.5770949125289917,
               "method": "multiscale"
             },
             {
               "referenceImage": "policia-campaign.png",
-              "confidence": 0.4894397258758545,
+              "confidence": 0.4855365753173828,
               "method": "multiscale"
             }
           ]
@@ -175,41 +147,36 @@
       "siteName": "Noticias Breves JAZB",
       "siteUrl": "https://noticiasbrevesjazb.com",
       "status": "found",
-      "bannersFound": 5,
+      "bannersFound": 4,
       "screenshots": [
         {
           "url": "https://noticiasbrevesjazb.com",
-          "image": "page_1_section_1_1788077238968.png",
+          "image": "page_1_section_1_1788164821784.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5534523725509644,
+              "confidence": 0.5425534248352051,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5725349187850952,
+              "confidence": 0.5817177891731262,
               "method": "multiscale"
             }
           ]
         },
         {
-          "url": "https://noticiasbrevesjazb.com/tus-productos-limpieza-fragancia-generan-nanoparticulas-peligrosas-aire/",
-          "image": "page_2_section_1_1788077261677.png",
+          "url": "https://noticiasbrevesjazb.com/camiones-vierten-excrementos-vertedero-duquesa-tratamiento-adecuado/",
+          "image": "page_2_section_1_1788164840748.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5040245652198792,
+              "confidence": 0.4936772584915161,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5488266348838806,
-              "method": "multiscale"
-            },
-            {
-              "referenceImage": "policia-campaign.png",
-              "confidence": 0.4661484956741333,
+              "confidence": 0.5553137063980103,
               "method": "multiscale"
             }
           ]
@@ -219,16 +186,87 @@
     {
       "siteName": "10 Noticias",
       "siteUrl": "https://www.10noticias.com.do",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 5,
+      "screenshots": [
+        {
+          "url": "https://www.10noticias.com.do",
+          "image": "page_1_section_1_1788164865826.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5457610487937927,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5724011063575745,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "policia-campaign.png",
+              "confidence": 0.4501016438007355,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://www.10noticias.com.do/tag/prm/",
+          "image": "page_2_section_1_1788164883432.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5399001836776733,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5720550417900085,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "Gobernanzas Digital",
       "siteUrl": "https://gobernanzasdigital.com",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 4,
+      "screenshots": [
+        {
+          "url": "https://gobernanzasdigital.com",
+          "image": "page_1_section_1_1788164895250.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5568592548370361,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5909681916236877,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://gobernanzasdigital.com/",
+          "image": "page_2_section_1_1788164909303.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5568592548370361,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5909681916236877,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "M2 Noticias",
@@ -254,51 +292,106 @@
     {
       "siteName": "El Vespertino",
       "siteUrl": "https://www.elvespertino.com",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
-    },
-    {
-      "siteName": "Entre Notas",
-      "siteUrl": "https://www.entrenotas.com.do",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
-    },
-    {
-      "siteName": "Expreso Digital",
-      "siteUrl": "https://expresodigital.com.do",
       "status": "found",
-      "bannersFound": 4,
+      "bannersFound": 2,
       "screenshots": [
         {
-          "url": "https://expresodigital.com.do",
-          "image": "page_1_section_1_1788077520617.png",
+          "url": "https://www.elvespertino.com",
+          "image": "page_1_section_1_1788165139848.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5424816012382507,
+              "confidence": 0.547263503074646,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5907493829727173,
+              "confidence": 0.6063246130943298,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "siteName": "Entre Notas",
+      "siteUrl": "https://www.entrenotas.com.do",
+      "status": "found",
+      "bannersFound": 4,
+      "screenshots": [
+        {
+          "url": "https://www.entrenotas.com.do",
+          "image": "page_1_section_1_1788165156748.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5433679223060608,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5979480147361755,
               "method": "multiscale"
             }
           ]
         },
         {
-          "url": "https://expresodigital.com.do/carolina-mejia-destaca-impacto-de-plasticos-por-utiles-escolares-tras-recolectar-16-5-millones-de-botellitas/",
-          "image": "page_2_section_1_1788077541500.png",
+          "url": "https://www.entrenotas.com.do/",
+          "image": "page_2_section_1_1788165169999.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5259310007095337,
+              "confidence": 0.5433679223060608,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.582871675491333,
+              "confidence": 0.5979480147361755,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "siteName": "Expreso Digital",
+      "siteUrl": "https://expresodigital.com.do",
+      "status": "found",
+      "bannersFound": 5,
+      "screenshots": [
+        {
+          "url": "https://expresodigital.com.do",
+          "image": "page_1_section_1_1788165190364.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5428972840309143,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5907485485076904,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://expresodigital.com.do/abinader-recibe-al-presidente-de-honduras-nasry-asfura-en-el-palacio-nacional/",
+          "image": "page_2_section_1_1788165208388.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5471608638763428,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5708703994750977,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "policia-campaign.png",
+              "confidence": 0.4990478456020355,
               "method": "multiscale"
             }
           ]
@@ -309,25 +402,20 @@
       "siteName": "Valor Noticioso",
       "siteUrl": "https://www.valornoticioso.com",
       "status": "found",
-      "bannersFound": 3,
+      "bannersFound": 2,
       "screenshots": [
         {
           "url": "https://www.valornoticioso.com",
-          "image": "page_1_section_1_1788077569965.png",
+          "image": "page_1_section_1_1788165235584.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5318061113357544,
+              "confidence": 0.5367075204849243,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5787994861602783,
-              "method": "multiscale"
-            },
-            {
-              "referenceImage": "policia-campaign.png",
-              "confidence": 0.4569114148616791,
+              "confidence": 0.5679792165756226,
               "method": "multiscale"
             }
           ]
@@ -344,9 +432,47 @@
     {
       "siteName": "Armario Libre",
       "siteUrl": "https://armariolibre.com.do",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 5,
+      "screenshots": [
+        {
+          "url": "https://armariolibre.com.do",
+          "image": "page_1_section_1_1788165259135.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5306028723716736,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.585227370262146,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "policia-campaign.png",
+              "confidence": 0.4599408209323883,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://www.armariolibre.com.do/wp-login.php?action=lostpassword&redirect_to=https%3A%2F%2Fwww.armariolibre.com.do%2F",
+          "image": "page_2_section_1_1788165272319.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.457944393157959,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.49376893043518066,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "El Pregonero RD",
@@ -356,42 +482,42 @@
       "screenshots": [
         {
           "url": "https://elpregonerord.com",
-          "image": "page_1_section_1_1788077600618.png",
+          "image": "page_1_section_1_1788165276966.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5537475943565369,
+              "confidence": 0.5427134037017822,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5750347971916199,
+              "confidence": 0.559336245059967,
               "method": "multiscale"
             },
             {
               "referenceImage": "policia-campaign.png",
-              "confidence": 0.46635547280311584,
+              "confidence": 0.45428451895713806,
               "method": "multiscale"
             }
           ]
         },
         {
           "url": "https://elpregonerord.com/",
-          "image": "page_2_section_1_1788077620811.png",
+          "image": "page_2_section_1_1788165294782.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5537475943565369,
+              "confidence": 0.5427134037017822,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.5750347971916199,
+              "confidence": 0.559336245059967,
               "method": "multiscale"
             },
             {
               "referenceImage": "policia-campaign.png",
-              "confidence": 0.46635547280311584,
+              "confidence": 0.45428451895713806,
               "method": "multiscale"
             }
           ]
@@ -406,32 +532,32 @@
       "screenshots": [
         {
           "url": "https://diarionoticiosord.com",
-          "image": "page_1_section_1_1788077641784.png",
+          "image": "page_1_section_1_1788165312972.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5494197607040405,
+              "confidence": 0.5494231581687927,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.56069415807724,
+              "confidence": 0.5644079446792603,
               "method": "multiscale"
             }
           ]
         },
         {
           "url": "https://www.diarionoticiosord.com/",
-          "image": "page_2_section_1_1788077657617.png",
+          "image": "page_2_section_1_1788165326088.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
-              "confidence": 0.5494197607040405,
+              "confidence": 0.5494231581687927,
               "method": "multiscale"
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.56069415807724,
+              "confidence": 0.5644079446792603,
               "method": "multiscale"
             }
           ]
@@ -441,9 +567,42 @@
     {
       "siteName": "Nizaero",
       "siteUrl": "https://nizaero.com",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 4,
+      "screenshots": [
+        {
+          "url": "https://nizaero.com",
+          "image": "page_1_section_1_1788165342289.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5574503540992737,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5753833651542664,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://nizaero.com/category/de-nizao/",
+          "image": "page_2_section_1_1788165357732.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5271883010864258,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5710484981536865,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "Fuente Noticias",
@@ -453,7 +612,7 @@
       "screenshots": [
         {
           "url": "https://fuentenoticias.com",
-          "image": "page_1_section_1_1788077678031.png",
+          "image": "page_1_section_1_1788165369903.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
@@ -472,7 +631,7 @@
       "screenshots": [
         {
           "url": "https://www.notiimpacto.com.do",
-          "image": "page_1_section_1_1788077697349.png",
+          "image": "page_1_section_1_1788165378863.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
@@ -481,14 +640,14 @@
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.6055347919464111,
+              "confidence": 0.6055001020431519,
               "method": "multiscale"
             }
           ]
         },
         {
           "url": "https://www.notiimpacto.com.do/",
-          "image": "page_2_section_1_1788077717725.png",
+          "image": "page_2_section_1_1788165393835.png",
           "matches": [
             {
               "referenceImage": "metro-campaign.png",
@@ -497,7 +656,7 @@
             },
             {
               "referenceImage": "obras-campaign.png",
-              "confidence": 0.6055347919464111,
+              "confidence": 0.6055001020431519,
               "method": "multiscale"
             }
           ]
@@ -519,7 +678,7 @@
       "screenshots": [
         {
           "url": "https://pinceldigital.do",
-          "image": "page_1_section_1_1788077739789.png",
+          "image": "page_1_section_1_1788165413014.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
@@ -540,16 +699,92 @@
     {
       "siteName": "Noticias en un Clic",
       "siteUrl": "https://noticiasenunclic.com",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 4,
+      "screenshots": [
+        {
+          "url": "https://noticiasenunclic.com",
+          "image": "page_1_section_1_1788165428610.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.542023241519928,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5532429814338684,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://noticiasenunclic.com/",
+          "image": "page_2_section_1_1788165447527.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.542023241519928,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5532429814338684,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "Tu República",
       "siteUrl": "https://turepublica.com",
-      "status": "not_found",
-      "bannersFound": 0,
-      "screenshots": []
+      "status": "found",
+      "bannersFound": 6,
+      "screenshots": [
+        {
+          "url": "https://turepublica.com",
+          "image": "page_1_section_1_1788165465869.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.5610686540603638,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5750701427459717,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "policia-campaign.png",
+              "confidence": 0.45635169744491577,
+              "method": "multiscale"
+            }
+          ]
+        },
+        {
+          "url": "https://turepublica.com/contacto/",
+          "image": "page_2_section_1_1788165480787.png",
+          "matches": [
+            {
+              "referenceImage": "metro-campaign.png",
+              "confidence": 0.47401565313339233,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "obras-campaign.png",
+              "confidence": 0.5420858860015869,
+              "method": "multiscale"
+            },
+            {
+              "referenceImage": "policia-campaign.png",
+              "confidence": 0.4563508927822113,
+              "method": "multiscale"
+            }
+          ]
+        }
+      ]
     },
     {
       "siteName": "El Diario",
@@ -559,7 +794,7 @@
       "screenshots": [
         {
           "url": "https://eldiario.do",
-          "image": "page_1_section_1_1788077759426.png",
+          "image": "page_1_section_1_1788165486840.png",
           "matches": [
             {
               "referenceImage": "obras-campaign.png",
